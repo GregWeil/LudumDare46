@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class KeepMovement : MonoBehaviour {
     private Vector3 Velocity = Vector3.zero;
@@ -21,11 +19,11 @@ public class KeepMovement : MonoBehaviour {
         }
         var position = transform.position + Velocity * Time.deltaTime;
         RaycastHit hit;
-        var top = transform.position + new Vector3(0, transform.localScale.y, 0);
-        var bottom = transform.position - new Vector3(0, transform.localScale.y, 0);
-        var radius = (transform.localScale.x + transform.localScale.z) / 4f;
         var direction = (position - transform.position).normalized;
         var distance = (position - transform.position).magnitude + 0.1f;
+        var top = transform.position - direction * 0.1f + new Vector3(0, transform.localScale.y, 0);
+        var bottom = transform.position - direction * 0.1f - new Vector3(0, transform.localScale.y, 0);
+        var radius = (transform.localScale.x + transform.localScale.z) / 4f;
         if (Physics.CapsuleCast(top, bottom, radius, direction, out hit, distance)) {
             position = transform.position;
             Velocity = Vector3.zero;
