@@ -7,6 +7,7 @@ public class CannonController : MonoBehaviour {
     private Vector2 Velocity = Vector2.zero;
 
     public GameObject Target;
+    public GameObject Mesh;
     public float MoveSpeed;
     public float Acceleration;
     public float MinRange;
@@ -26,6 +27,7 @@ public class CannonController : MonoBehaviour {
         } else if (distance > MaxRange) {
             Target.transform.localPosition = Target.transform.localPosition.normalized * MaxRange;
         }
+        Mesh.transform.rotation = Quaternion.LookRotation(Target.transform.localPosition.normalized, Vector3.up);
     }
 
     void OnMove(InputValue value) {

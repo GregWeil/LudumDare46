@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour {
         if (ActiveCharacter != null) Destroy(ActiveCharacter);
         ActiveCharacter = Instantiate(CannonPrefab, transform);
         ActiveCharacter.name = CannonPrefab.name;
+        ActiveCharacter.transform.position = Keep.transform.position;
     }
 
     public void ExitKeep() {
