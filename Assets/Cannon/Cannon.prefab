@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 4074157859870220672}
-  MoveSpeed: 20
+  MoveSpeed: 15
   Acceleration: 5
   MinRange: 5
   MaxRange: 20
