@@ -19,7 +19,20 @@ public class KeepMovement : MonoBehaviour {
         } else {
             Velocity = Vector3.MoveTowards(Velocity, TargetVelocity, Acceleration * Time.deltaTime);
         }
-        transform.position += Velocity * Time.deltaTime;
+        var position = transform.position + Velocity * Time.deltaTime;
+        RaycastHit hit;
+        var top = transform.position + new Vector3(0, transform.localScale.y, 0);
+        var bottom = transform.position - new Vector3(0, transform.localScale.y, 0);
+        var radius = (transform.localScale.x + transform.localScale.z) / 4f;
+        var direction = (position - transform.position).normalized;
+        var distance = (position - transform.position).magnitude + 0.1f;
+        if (Physics.CapsuleCast(top, bottom, radius, direction, out hit, distance)) {
+            position = transform.position;
+            Velocity = Vector3.zero;
+            TargetVelocity = Vector3.zero;
+            NeedsToStop = true;
+        }
+        transform.position = position;
     }
 
     public void MarkPosition(Vector3 position) {

@@ -764,7 +764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2964d948138ee364dbef2b6819200429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 10
+  MoveSpeed: 8
   Acceleration: 0.2
 --- !u!114 &1873688302
 MonoBehaviour:
@@ -857,7 +857,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 1
   Acceleration: 0.2
-  Decceleration: 5
+  Decceleration: 2.5
   StopThreshold: 0.2
 --- !u!136 &2062981586
 CapsuleCollider:
