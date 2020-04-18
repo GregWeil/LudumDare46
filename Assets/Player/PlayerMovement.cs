@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerMovement : MonoBehaviour {
     private Vector2 InputMovement = Vector2.zero;
     private Vector3 Velocity = Vector3.zero;
 
