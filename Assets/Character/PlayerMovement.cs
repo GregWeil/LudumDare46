@@ -29,4 +29,8 @@ public class PlayerMovement : MonoBehaviour {
     void OnMove(InputValue value) {
         InputMovement = value.Get<Vector2>();
     }
+
+    void Dead() {
+        MoveSpeed = 0f;
+    }
 }

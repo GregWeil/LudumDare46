@@ -19,8 +19,12 @@ public class PlayerKeep : MonoBehaviour {
     }
 
     void OnTower(InputValue value) {
-        if (value.isPressed) {
+        if (value.isPressed && isActiveAndEnabled) {
             Keep.GetComponent<KeepMovement>().MarkPosition(transform.position);
         }
+    }
+
+    void Dead() {
+        enabled = false;
     }
 }

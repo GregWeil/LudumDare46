@@ -7,6 +7,8 @@ public class Explosion : MonoBehaviour {
     }
 
     IEnumerator Cycle() {
+        yield return new WaitForSeconds(0.05f);
+        
         var sphere = GetComponent<SphereCollider>();
         var collisions = Physics.OverlapSphere(transform.position, sphere.radius);
         foreach (var collider in collisions) {
