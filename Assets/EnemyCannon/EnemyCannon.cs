@@ -44,7 +44,7 @@ public class EnemyCannon : MonoBehaviour {
                         break;
                     }
                 }
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(Random.Range(0.1f, 0.2f));
             }
 
             Reticle.transform.position = Vector3.Scale(transform.position, new Vector3(1, 0, 1));
@@ -60,7 +60,7 @@ public class EnemyCannon : MonoBehaviour {
             }
 
             yield return new WaitForSeconds(FireDelay);
-            
+
             var gameObject = Instantiate(CannonballPrefab);
             gameObject.name = CannonballPrefab.name;
             gameObject.transform.position = Cannon.transform.position;

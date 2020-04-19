@@ -106,6 +106,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e38aedb7a852b45b7054527b6a7cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ExplosionPrefab: {fileID: 347352618685019098, guid: c1baf98aaa57dd24f957c68055ba1314,
+    type: 3}
+  IgnoreObject: {fileID: 0}
   TargetPosition: {x: 0, y: 0, z: 0}
   Height: 5
   Duration: 0.5
