@@ -7,6 +7,7 @@ public class CannonController : MonoBehaviour {
     private Vector2 Velocity = Vector2.zero;
 
     public GameObject CannonballPrefab;
+    public GameObject FirePosition;
     public GameObject Target;
     public GameObject Mesh;
     public float MoveSpeed;
@@ -39,7 +40,7 @@ public class CannonController : MonoBehaviour {
         if (value.isPressed) {
             var gameObject = Instantiate(CannonballPrefab);
             gameObject.name = CannonballPrefab.name;
-            gameObject.transform.position = Mesh.transform.position;
+            gameObject.transform.position = FirePosition.transform.position;
             var cannonball = gameObject.GetComponent<Cannonball>();
             cannonball.TargetPosition = Target.transform.position;
             cannonball.IgnoreObject = Keep;
