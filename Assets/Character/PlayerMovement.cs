@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour {
             RaycastHit hit;
             var direction = Quaternion.Euler(0, i * 360f / 8, 0) * Vector3.forward;
             var distance = (transform.localScale.x + transform.localScale.z) / 4f;
-            if (Physics.Raycast(transform.position, direction, out hit, distance)) {
+            if (Physics.Raycast(transform.position, direction, out hit, distance, LayerMask.GetMask("Default"))) {
                 var offset = hit.normal * (distance - hit.distance);
                 offset.y = 0;
                 transform.position += offset;

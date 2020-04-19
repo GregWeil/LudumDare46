@@ -14,7 +14,8 @@ public class PlayerController : MonoBehaviour {
         ExitKeep();
     }
 
-    public void EnterKeep() {
+    public void EnterKeep(GameObject keep) {
+        Keep = keep;
         if (ActiveCharacter != null) Destroy(ActiveCharacter);
         ActiveCharacter = Instantiate(CannonPrefab, transform);
         ActiveCharacter.name = CannonPrefab.name;

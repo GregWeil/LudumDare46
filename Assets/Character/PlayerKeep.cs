@@ -14,7 +14,7 @@ public class PlayerKeep : MonoBehaviour {
         var offset = Keep.transform.position - transform.position;
         offset.y = 0;
         if (offset.magnitude < EnterRange) {
-            SendMessageUpwards("EnterKeep");
+            SendMessageUpwards("EnterKeep", Keep);
         }
     }
 

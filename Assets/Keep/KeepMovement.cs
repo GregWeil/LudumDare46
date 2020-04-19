@@ -35,7 +35,7 @@ public class KeepMovement : MonoBehaviour {
         var distance = (position - transform.position).magnitude + 0.1f;
         var top = transform.position - direction * 0.1f + new Vector3(0, transform.localScale.y, 0);
         var bottom = transform.position - direction * 0.1f - new Vector3(0, transform.localScale.y, 0);
-        if (Physics.CapsuleCast(top, bottom, Collider.radius, direction, out hit, distance)) {
+        if (Physics.CapsuleCast(top, bottom, Collider.radius, direction, out hit, distance, LayerMask.GetMask("Default"))) {
             position = transform.position;
             Velocity = Vector3.zero;
             TargetVelocity = Vector3.zero;
