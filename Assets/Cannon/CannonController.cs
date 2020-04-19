@@ -5,11 +5,13 @@ public class CannonController : MonoBehaviour {
     private GameObject Keep;
     private Vector2 Movement = Vector2.zero;
     private Vector2 Velocity = Vector2.zero;
+    private float CanNextFire = 0f;
 
     public GameObject CannonballPrefab;
     public GameObject FirePosition;
     public GameObject Target;
     public GameObject Mesh;
+    public float FireRate;
     public float MoveSpeed;
     public float Acceleration;
     public float MinRange;
@@ -37,13 +39,14 @@ public class CannonController : MonoBehaviour {
     }
 
     void OnAttack(InputValue value) {
-        if (value.isPressed) {
+        if (value.isPressed && Time.time >= CanNextFire) {
             var gameObject = Instantiate(CannonballPrefab);
             gameObject.name = CannonballPrefab.name;
             gameObject.transform.position = FirePosition.transform.position;
             var cannonball = gameObject.GetComponent<Cannonball>();
             cannonball.TargetPosition = Target.transform.position;
             cannonball.IgnoreObject = Keep;
+            CanNextFire = Time.time + FireRate;
         }
     }
 

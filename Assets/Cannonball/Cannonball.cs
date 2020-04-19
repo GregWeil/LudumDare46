@@ -19,13 +19,20 @@ public class Cannonball : MonoBehaviour {
         transform.position = Parabola.PositionAtTime(StartPosition, TargetPosition, StartTime, Duration, Height, Time.time);
         var collisions = Physics.OverlapSphere(transform.position, 0.5f);
         if (collisions.Any(collider => !collider.transform.IsChildOf(IgnoreObject.transform) && !collider.transform.IsChildOf(transform))) {
-            var explosion = Instantiate(ExplosionPrefab);
-            explosion.name = ExplosionPrefab.name;
-            explosion.transform.position = transform.position;
-            Destroy(explosion, 1f);
-            Destroy(gameObject);
+            Explode();
         } else if (transform.position.y < -100f) {
             Destroy(gameObject);
         }
+    }
+
+    void Explode() {
+        var explosion = Instantiate(ExplosionPrefab);
+        explosion.name = ExplosionPrefab.name;
+        explosion.transform.position = transform.position;
+        Destroy(gameObject);
+    }
+
+    void Damage() {
+        Explode();
     }
 }

@@ -190,6 +190,7 @@ MonoBehaviour:
   FirePosition: {fileID: 4759422795177362543}
   Target: {fileID: 4074157859870220672}
   Mesh: {fileID: 5310488951134784598}
+  FireRate: 0.1
   MoveSpeed: 15
   Acceleration: 5
   MinRange: 5
