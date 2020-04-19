@@ -2,11 +2,20 @@
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour {
+    private Animator Animation;
+    private SpriteRenderer Sprite;
+    private CapsuleCollider Collider;
     private Vector2 InputMovement = Vector2.zero;
     private Vector3 Velocity = Vector3.zero;
 
     public float MoveSpeed;
     public float Acceleration;
+
+    void Start() {
+        Animation = GetComponent<Animator>();
+        Sprite = GetComponent<SpriteRenderer>();
+        Collider = GetComponent<CapsuleCollider>();
+    }
 
     void Update() {
         var target = new Vector3(InputMovement.x, 0, InputMovement.y).normalized * MoveSpeed;
@@ -16,6 +25,7 @@ public class PlayerMovement : MonoBehaviour {
 
         for (var i = 0; i < 8; ++i) {
             RaycastHit hit;
+            var center = transform.TransformPoint(Collider.center);
             var direction = Quaternion.Euler(0, i * 360f / 8, 0) * Vector3.forward;
             var distance = (transform.localScale.x + transform.localScale.z) / 4f;
             if (Physics.Raycast(transform.position, direction, out hit, distance, LayerMask.GetMask("Default"))) {
@@ -23,6 +33,11 @@ public class PlayerMovement : MonoBehaviour {
                 offset.y = 0;
                 transform.position += offset;
             }
+        }
+
+        Animation.SetFloat("Speed", Velocity.magnitude);
+        if (Mathf.Abs(Velocity.x) > 1f) {
+            Sprite.flipX = Velocity.x < 0f;
         }
     }
 

@@ -10,7 +10,7 @@ public class PlayerGrab : MonoBehaviour {
 
     void Update() {
         if (HeldItem != null) {
-            var targetPosition = transform.TransformPoint(0, 1, 0);
+            var targetPosition = transform.TransformPoint(0, 2, 0);
             HeldItem.transform.position = Vector3.MoveTowards(HeldItem.transform.position, targetPosition, GrabSpeed * Time.deltaTime);
         }
     }
