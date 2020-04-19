@@ -2,7 +2,7 @@
 using UnityEngine.InputSystem;
 
 public class CannonController : MonoBehaviour {
-    private GameObject Keep;
+    private KeepController Keep;
     private Vector2 Movement = Vector2.zero;
     private Vector2 Velocity = Vector2.zero;
     private float CanNextFire = 0f;
@@ -18,7 +18,7 @@ public class CannonController : MonoBehaviour {
     public float MaxRange;
 
     void Start() {
-        Keep = GameObject.Find("Keep");
+        Keep = GameObject.Find("Keep").GetComponent<KeepController>();
     }
 
     void Update() {
@@ -40,12 +40,17 @@ public class CannonController : MonoBehaviour {
 
     void OnAttack(InputValue value) {
         if (value.isPressed && Time.time >= CanNextFire) {
+            if (Keep.Ammo <= 0) {
+                // maybe play a sound or something?
+                return;
+            }
+            Keep.Ammo -= 1;
             var gameObject = Instantiate(CannonballPrefab);
             gameObject.name = CannonballPrefab.name;
             gameObject.transform.position = FirePosition.transform.position;
             var cannonball = gameObject.GetComponent<Cannonball>();
             cannonball.TargetPosition = Target.transform.position;
-            cannonball.IgnoreObject = Keep;
+            cannonball.IgnoreObject = Keep.gameObject;
             CanNextFire = Time.time + FireRate;
         }
     }

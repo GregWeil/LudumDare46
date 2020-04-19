@@ -17,7 +17,7 @@ public class Pickup : MonoBehaviour {
     }
 
     IEnumerator DropCycle() {
-        var targetPosition = Vector3.Scale(transform.TransformPoint(0, 0, 1), new Vector3(1, 0, 1));
+        var targetPosition = Vector3.Scale(transform.position, new Vector3(1, 0, 1));
         while (transform.position.y > 0f) {
             yield return null;
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, DropSpeed * Time.deltaTime);
