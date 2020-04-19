@@ -124,13 +124,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d56c501ee7c3ff247a6ff96df844ea74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CannonballPrefab: {fileID: 7278866958359827437, guid: f0f3d44ae8c05234a80901faed7d13fb,
+    type: 3}
   Cannon: {fileID: 6652267307218055778}
   Reticle: {fileID: 886533457235782533}
   MoveSpeed: 0.1
   RotationSpeed: 0.1
   ActivationRange: 15
   TrackingTime: 0.5
-  FireDelay: 0.5
+  FireDelay: 0
   CooldownTime: 1
 --- !u!1 &6652267307218055778
 GameObject:

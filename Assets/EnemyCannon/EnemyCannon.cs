@@ -1,7 +1,10 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemyCannon : MonoBehaviour {
+    public GameObject CannonballPrefab;
     public GameObject Cannon;
     public GameObject Reticle;
     public float MoveSpeed;
@@ -31,11 +34,12 @@ public class EnemyCannon : MonoBehaviour {
 
             while (target == null) {
                 var players = GameObject.FindObjectsOfType<PlayerMovement>();
-                foreach (var player in players) {
-                    var offset = player.transform.position - transform.position;
+                var potentialTargets = players.Select(player => player.gameObject).Prepend(GameObject.Find("Keep"));
+                foreach (var potential in potentialTargets) {
+                    var offset = potential.transform.position - transform.position;
                     offset.y = 0;
                     if (offset.magnitude < ActivationRange) {
-                        target = player.gameObject;
+                        target = potential.gameObject;
                         lastPosition = Vector3.Scale(target.transform.position, new Vector3(1, 0, 1));
                         break;
                     }
@@ -56,6 +60,15 @@ public class EnemyCannon : MonoBehaviour {
             }
 
             yield return new WaitForSeconds(FireDelay);
+            
+            var gameObject = Instantiate(CannonballPrefab);
+            gameObject.name = CannonballPrefab.name;
+            gameObject.transform.position = Cannon.transform.position;
+            var cannonball = gameObject.GetComponent<Cannonball>();
+            cannonball.TargetPosition = Reticle.transform.position;
+            cannonball.IgnoreObject = transform.root.gameObject;
+
+            yield return new WaitForSeconds(cannonball.Duration);
 
             Reticle.SetActive(false);
             yield return new WaitForSeconds(CooldownTime);
