@@ -553,6 +553,7 @@ MonoBehaviour:
   - {fileID: 1437660841974888257, guid: fb7b04c901c1c7a4cb49678522d45aef, type: 3}
   - {fileID: 1881585843142504683, guid: 7fc873e1602d3e247bdd062f28fd5460, type: 3}
   - {fileID: 8785101870492099185, guid: 41697df2731569a4cb57b3e0d920b846, type: 3}
+  - {fileID: 8827898873417343912, guid: 5f3b969e3e0be844ca0f778e485c2e0e, type: 3}
 --- !u!4 &906204727
 Transform:
   m_ObjectHideFlags: 0
@@ -580,7 +581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_NotificationBehavior: 0
-  m_MaxPlayerCount: 3
+  m_MaxPlayerCount: 4
   m_AllowJoining: 1
   m_JoinBehavior: 0
   m_PlayerJoinedEvent:
