@@ -4,11 +4,13 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour {
     private bool Dead = false;
 
+    public float RespawnTime;
+
     IEnumerator Die() {
         Dead = true;
         SendMessage("Dead");
-        transform.RotateAround(transform.position, Vector3.forward, 90);
-        yield return new WaitForSeconds(1f);
+        GetComponent<Animator>().SetTrigger("Dead");
+        yield return new WaitForSeconds(RespawnTime);
         SendMessageUpwards("ExitKeep");
     }
 

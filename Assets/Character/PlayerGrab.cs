@@ -3,16 +3,24 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerGrab : MonoBehaviour {
+    private Animator Animation;
+
     public float Range;
     public float GrabSpeed;
+    public float CarryHeight;
 
     private Pickup HeldItem;
 
+    void Start() {
+        Animation = GetComponent<Animator>();
+    }
+
     void Update() {
         if (HeldItem != null) {
-            var targetPosition = transform.TransformPoint(0, 2, 0);
+            var targetPosition = transform.TransformPoint(0, CarryHeight, 0);
             HeldItem.transform.position = Vector3.MoveTowards(HeldItem.transform.position, targetPosition, GrabSpeed * Time.deltaTime);
         }
+        Animation.SetBool("Carrying", HeldItem != null);
     }
 
     void Grab() {

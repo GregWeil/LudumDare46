@@ -114,6 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Range: 2
   GrabSpeed: 20
+  CarryHeight: 2.5
 --- !u!114 &-6450679178273311041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f22f87baf9cb91742991c8156445d168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RespawnTime: 2
 --- !u!212 &6905501814203586981
 SpriteRenderer:
   m_ObjectHideFlags: 0
