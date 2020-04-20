@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Range: 2
-  GrabSpeed: 20
+  GrabSpeed: 25
   CarryHeight: 2.5
 --- !u!114 &-6450679178273311041
 MonoBehaviour:
