@@ -5,11 +5,12 @@ public class KeepController : MonoBehaviour {
     public Text HealthDisplay;
     public Text AmmoDisplay;
 
+    public int MaxHealth;
     public int Health;
     public int Ammo;
 
     void Update() {
-        HealthDisplay.text = $"{Health}";
+        HealthDisplay.text = $"{Health}/{MaxHealth}";
         AmmoDisplay.text = $"{Ammo}";
     }
 

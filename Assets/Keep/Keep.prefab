@@ -556,7 +556,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthDisplay: {fileID: 3512553752855989068}
   AmmoDisplay: {fileID: 564701578855190853}
-  Health: 10
+  MaxHealth: 25
+  Health: 25
   Ammo: 10
 --- !u!114 &8275991773486229641
 MonoBehaviour:

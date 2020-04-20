@@ -71,7 +71,10 @@ public class EnemyCannon : MonoBehaviour {
             yield return new WaitForSeconds(cannonball.Duration);
 
             Reticle.SetActive(false);
-            yield return new WaitForSeconds(CooldownTime);
+            var increments = 5;
+            for (var i = 0; i < increments; ++i) {
+                yield return new WaitForSeconds(CooldownTime / increments);
+            }
         }
     }
 }

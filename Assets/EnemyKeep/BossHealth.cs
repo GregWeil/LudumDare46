@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BossHealth : MonoBehaviour {
     private Vector3 ShakeOffset = Vector3.zero;

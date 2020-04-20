@@ -12,8 +12,21 @@ public class Pickup : MonoBehaviour {
 
     public void Apply(KeepController keep) {
         keep.Health += Health;
+        if (keep.Health > keep.MaxHealth) {
+            Health = keep.Health - keep.MaxHealth;
+            keep.Health = keep.MaxHealth;
+        } else {
+            Health = 0;
+        }
+        
         keep.Ammo += Ammo;
-        Destroy(gameObject);
+        Ammo = 0;
+
+        if (Health > 0 || Ammo > 0) {
+            Drop();
+        } else {
+            Destroy(gameObject);
+        }
     }
 
     IEnumerator DropCycle() {
