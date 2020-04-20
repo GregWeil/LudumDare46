@@ -16,16 +16,18 @@ public class Pickup : MonoBehaviour {
         var initialHealth = Health;
         var initialAmmo = Ammo;
 
-        keep.Health += Health;
-        if (keep.Health > keep.MaxHealth) {
-            Health = keep.Health - keep.MaxHealth;
-            keep.Health = keep.MaxHealth;
-        } else {
-            Health = 0;
+        if (!keep.Dead) {
+            keep.Health += Health;
+            if (keep.Health > keep.MaxHealth) {
+                Health = keep.Health - keep.MaxHealth;
+                keep.Health = keep.MaxHealth;
+            } else {
+                Health = 0;
+            }
+            
+            keep.Ammo += Ammo;
+            Ammo = 0;
         }
-        
-        keep.Ammo += Ammo;
-        Ammo = 0;
 
         if (Health < initialHealth || Ammo < initialAmmo) {
             var sound = Instantiate(SoundPrefab, transform.position, transform.rotation);

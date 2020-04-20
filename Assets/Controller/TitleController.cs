@@ -2,9 +2,11 @@
 using UnityEngine.SceneManagement;
 
 public class TitleController : MonoBehaviour {
+    public string SceneToLoad;
+
     void Update() {
         if (Input.anyKeyDown) {
-            SceneManager.LoadScene("MainScene");
+            SceneManager.LoadScene(SceneToLoad);
         }
     }
 }
