@@ -7,10 +7,15 @@ public class OrcMovement : MonoBehaviour {
     private Animator Animation;
     private Vector3 Target;
     private bool Aggro;
+    private bool Attacking;
+
+    public AudioSource AttackSound;
 
     public float MoveSpeed;
     public float AggroMoveSpeed;
     public float AggroRange;
+    public float TelegraphTime;
+    public float SwingTime;
 
     void Start() {
         Sprite = GetComponentInChildren<SpriteRenderer>();
@@ -21,6 +26,8 @@ public class OrcMovement : MonoBehaviour {
 
     IEnumerator Cycle() {
         while (true) {
+            yield return new WaitForSeconds(Random.Range(0.1f, 0.25f));
+            if (Attacking) continue;
             Aggro = false;
             var target = GameObject.Find("Keep");
             var players = GameObject.FindObjectsOfType<PlayerMovement>();
@@ -34,12 +41,27 @@ public class OrcMovement : MonoBehaviour {
                 }
             }
             Target = target.transform.position;
-            yield return new WaitForSeconds(Random.Range(0.1f, 0.25f));
         }
+    }
+
+    IEnumerator Attack() {
+        Attacking = true;
+        Animation.SetTrigger("Telegraph");
+        yield return new WaitForSeconds(TelegraphTime);
+        Animation.SetTrigger("Swing");
+        AttackSound.Play();
+        yield return new WaitForSeconds(SwingTime);
+        Animation.SetTrigger("AttackDone");
+        Attacking = false;
+        Aggro = false;
     }
 
     void Update() {
         var speed = Aggro ? AggroMoveSpeed : MoveSpeed;
+        if (Aggro && Vector3.Distance(transform.position, Target) < 2f) {
+            if (!Attacking) StartCoroutine(Attack());
+            speed = 0f;
+        }
         var velocity = speed * (Target - transform.position).normalized;
         velocity.y = 0f;
         transform.position += velocity * Time.deltaTime;
