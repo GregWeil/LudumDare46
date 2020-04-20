@@ -9,7 +9,7 @@ public class PlayerHealth : MonoBehaviour {
     IEnumerator Die() {
         Dead = true;
         SendMessage("Dead");
-        GetComponent<Animator>().SetTrigger("Dead");
+        GetComponentInChildren<Animator>().SetTrigger("Dead");
         yield return new WaitForSeconds(RespawnTime);
         SendMessageUpwards("ExitKeep");
     }

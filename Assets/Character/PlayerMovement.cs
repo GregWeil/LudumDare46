@@ -12,8 +12,8 @@ public class PlayerMovement : MonoBehaviour {
     public float Acceleration;
 
     void Start() {
-        Animation = GetComponent<Animator>();
-        Sprite = GetComponent<SpriteRenderer>();
+        Animation = GetComponentInChildren<Animator>();
+        Sprite = GetComponentInChildren<SpriteRenderer>();
         Collider = GetComponent<CapsuleCollider>();
     }
 

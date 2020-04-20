@@ -12,7 +12,7 @@ public class PlayerGrab : MonoBehaviour {
     private Pickup HeldItem;
 
     void Start() {
-        Animation = GetComponent<Animator>();
+        Animation = GetComponentInChildren<Animator>();
     }
 
     void Update() {

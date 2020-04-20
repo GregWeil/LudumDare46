@@ -5,7 +5,9 @@ public class Cannonball : MonoBehaviour {
     private Vector3 StartPosition;
     private float StartTime;
     public GameObject ExplosionPrefab;
+    [HideInInspector]
     public GameObject IgnoreObject;
+    [HideInInspector]
     public Vector3 TargetPosition;
     public float Height;
     public float Duration;
@@ -29,6 +31,7 @@ public class Cannonball : MonoBehaviour {
         var explosion = Instantiate(ExplosionPrefab);
         explosion.name = ExplosionPrefab.name;
         explosion.transform.position = transform.position;
+        explosion.GetComponent<Explosion>().IgnoreObject = IgnoreObject;
         Destroy(gameObject);
     }
 
