@@ -3,7 +3,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerKeep : MonoBehaviour {
     private GameObject Keep;
-
+    
+    public GameObject WaypointPrefab;
     public float EnterRange;
 
     void Start() {
@@ -21,6 +22,9 @@ public class PlayerKeep : MonoBehaviour {
     void OnTower(InputValue value) {
         if (value.isPressed && isActiveAndEnabled) {
             Keep.GetComponent<KeepMovement>().MarkPosition(transform.position);
+            var waypoint = Instantiate(WaypointPrefab);
+            waypoint.name = WaypointPrefab.name;
+            waypoint.transform.position = transform.position;
         }
     }
 
