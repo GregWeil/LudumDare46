@@ -6796,7 +6796,7 @@ GameObject:
   - component: {fileID: 1656723633}
   - component: {fileID: 1656723636}
   - component: {fileID: 1656723635}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Orc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6863,7 +6863,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 2
-  AggroMoveSpeed: 8
+  AggroMoveSpeed: 7.5
   AggroRange: 15
 --- !u!4 &1663897744 stripped
 Transform:
@@ -8781,7 +8781,7 @@ GameObject:
   - component: {fileID: 2073593743}
   - component: {fileID: 2073593744}
   - component: {fileID: 2073593745}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

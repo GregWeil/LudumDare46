@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class OrcMovement : MonoBehaviour {
+    private SpriteRenderer Sprite;
     private Animator Animation;
     private Vector3 Target;
     private bool Aggro;
@@ -12,6 +13,7 @@ public class OrcMovement : MonoBehaviour {
     public float AggroRange;
 
     void Start() {
+        Sprite = GetComponentInChildren<SpriteRenderer>();
         Animation = GetComponentInChildren<Animator>();
         Target = transform.position;
         StartCoroutine(Cycle());
@@ -40,7 +42,11 @@ public class OrcMovement : MonoBehaviour {
         var speed = Aggro ? AggroMoveSpeed : MoveSpeed;
         var velocity = speed * (Target - transform.position).normalized;
         velocity.y = 0f;
-        Animation.SetFloat("Speed", velocity.magnitude);
         transform.position += velocity * Time.deltaTime;
+
+        Animation.SetFloat("Speed", velocity.magnitude);
+        if (Mathf.Abs(velocity.x) > 1f) {
+            Sprite.flipX = velocity.x < 0f;
+        }
     }
 }
