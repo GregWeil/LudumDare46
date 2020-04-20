@@ -18,7 +18,7 @@ public class Explosion : MonoBehaviour {
         var collisions = Physics.OverlapSphere(transform.position, sphere.radius);
         foreach (var collider in collisions) {
             if (hitObjects.Contains(collider.transform.root)) continue;
-            if (collider.transform.IsChildOf(IgnoreObject.transform)) continue;
+            if (IgnoreObject != null && collider.transform.IsChildOf(IgnoreObject.transform)) continue;
             collider.SendMessageUpwards("Damage", SendMessageOptions.DontRequireReceiver);
             hitObjects.Add(collider.transform.root);
         }

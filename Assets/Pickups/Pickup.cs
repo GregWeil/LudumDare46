@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Pickup : MonoBehaviour {
+    public GameObject SoundPrefab;
+
     public float DropSpeed;
     public int Health;
     public int Ammo;
@@ -11,6 +13,10 @@ public class Pickup : MonoBehaviour {
     public bool Held;
 
     public void Apply(KeepController keep) {
+        var sound = Instantiate(SoundPrefab, transform.position, transform.rotation);
+        sound.name = SoundPrefab.name;
+        Destroy(sound, 1f);
+
         keep.Health += Health;
         if (keep.Health > keep.MaxHealth) {
             Health = keep.Health - keep.MaxHealth;

@@ -8,6 +8,7 @@ public class CannonController : MonoBehaviour {
     private float CanNextFire = 0f;
 
     public GameObject CannonballPrefab;
+    public AudioSource EmptySound;
     public GameObject FirePosition;
     public GameObject Target;
     public GameObject Mesh;
@@ -41,7 +42,7 @@ public class CannonController : MonoBehaviour {
     void OnAttack(InputValue value) {
         if (value.isPressed && Time.time >= CanNextFire) {
             if (Keep.Ammo <= 0) {
-                // maybe play a sound or something?
+                EmptySound.Play();
                 return;
             }
             Keep.Ammo -= 1;

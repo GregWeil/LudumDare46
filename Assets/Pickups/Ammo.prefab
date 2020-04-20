@@ -127,6 +127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c82a923c489054e9ddb7a08d3f2470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SoundPrefab: {fileID: 4547343609936459274, guid: 7bdc7b11e12605547a5dfa5d554fe9a4,
+    type: 3}
   DropSpeed: 15
   Health: 0
   Ammo: 5
