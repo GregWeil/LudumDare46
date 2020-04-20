@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2964d948138ee364dbef2b6819200429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 10
+  MoveSpeed: 12.5
   Acceleration: 0.2
 --- !u!114 &1437660841974888280
 MonoBehaviour:
@@ -175,7 +175,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!1001 &2820961920556658346
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -24,7 +24,7 @@ public class PlayerKeep : MonoBehaviour {
             Keep.GetComponent<KeepMovement>().MarkPosition(transform.position);
             var waypoint = Instantiate(WaypointPrefab);
             waypoint.name = WaypointPrefab.name;
-            waypoint.transform.position = transform.position;
+            waypoint.transform.position = transform.position + Vector3.back * 0.5f;
         }
     }
 

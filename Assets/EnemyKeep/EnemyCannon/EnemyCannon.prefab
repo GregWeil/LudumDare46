@@ -130,7 +130,7 @@ MonoBehaviour:
   Reticle: {fileID: 886533457235782533}
   MoveSpeed: 0.1
   RotationSpeed: 0.1
-  ActivationRange: 15
+  ActivationRange: 25
   TrackingTime: 0.5
   FireDelay: 0
   CooldownTime: 1
