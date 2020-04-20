@@ -16,5 +16,6 @@ public class KeepController : MonoBehaviour {
 
     void Damage() {
         Health -= 1;
+        if (Health < 0) Health = 0;
     }
 }

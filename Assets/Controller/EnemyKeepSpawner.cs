@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyKeepSpawner : MonoBehaviour {
     private List<GameObject> ActiveKeeps = new List<GameObject>();
     private int KeepsDestroyed = 0;
+
+    public UnityEngine.UI.Text ScoreDisplay;
     public GameObject EnemyKeepPrefab;
     public float PlayerDistance;
     public float KeepDistance;
@@ -16,6 +18,7 @@ public class EnemyKeepSpawner : MonoBehaviour {
         if (ActiveKeeps.Count < desired) {
             SpawnKeep();
         }
+        ScoreDisplay.text = KeepsDestroyed > 0 ? $"{KeepsDestroyed}" : "";
     }
 
     Vector3 GetFallbackPosition(Vector3 avoidPosition) {
