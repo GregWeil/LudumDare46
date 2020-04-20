@@ -5,8 +5,10 @@ using UnityEngine;
 public class OrcMovement : MonoBehaviour {
     private Animator Animation;
     private Vector3 Target;
+    private bool Aggro;
 
     public float MoveSpeed;
+    public float AggroMoveSpeed;
     public float AggroRange;
 
     void Start() {
@@ -17,12 +19,14 @@ public class OrcMovement : MonoBehaviour {
 
     IEnumerator Cycle() {
         while (true) {
+            Aggro = false;
             var target = GameObject.Find("Keep");
             var players = GameObject.FindObjectsOfType<PlayerMovement>();
             foreach (var player in players) {
                 var offset = player.transform.position - transform.position;
                 offset.y = 0;
                 if (offset.magnitude < AggroRange) {
+                    Aggro = true;
                     target = player.gameObject;
                     break;
                 }
@@ -33,7 +37,8 @@ public class OrcMovement : MonoBehaviour {
     }
 
     void Update() {
-        var velocity = MoveSpeed * (Target - transform.position).normalized;
+        var speed = Aggro ? AggroMoveSpeed : MoveSpeed;
+        var velocity = speed * (Target - transform.position).normalized;
         velocity.y = 0f;
         Animation.SetFloat("Speed", velocity.magnitude);
         transform.position += velocity * Time.deltaTime;

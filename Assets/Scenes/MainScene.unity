@@ -6863,7 +6863,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 2
-  AggroRange: 10
+  AggroMoveSpeed: 8
+  AggroRange: 15
 --- !u!4 &1663897744 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3031604038574540695, guid: 09378d5cc79883f458c4fda426a4285a,

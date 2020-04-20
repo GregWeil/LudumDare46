@@ -21,7 +21,7 @@ public class OrcHealth : MonoBehaviour {
 
     void Damage() {
         if (Dead) return;
-        GetComponent<OrcMovement>().MoveSpeed = 0f;
+        GetComponent<OrcMovement>().enabled = false;
         GetComponentInChildren<Animator>().SetTrigger("Dead");
         StartCoroutine(DeathAnimation());
         if (Random.value < DropRate) {
