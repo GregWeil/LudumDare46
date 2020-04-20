@@ -1,31 +1,19 @@
 fileFormatVersion: 2
-guid: 69096df3fb4e98244b0065883b1857a7
+guid: 650727818adbf1148aad824807d1d214
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1258975219986103608
-    second: knight run - front draft_0
+      213: -1818381276352421605
+    second: red knight run sheet_0
   - first:
-      213: -4233112450662728445
-    second: knight run - front draft_1
+      213: 2864213624708811434
+    second: red knight run sheet_1
   - first:
-      213: -899798474058639232
-    second: knight run - front draft_2
+      213: 1896244657210997526
+    second: red knight run sheet_2
   - first:
-      213: 5314429725116276735
-    second: knight run - front draft_3
-  - first:
-      213: 6085112685728623874
-    second: knight run - front draft_0
-  - first:
-      213: 8823990119387176938
-    second: knight run - front draft_1
-  - first:
-      213: 46113861976647082
-    second: knight run - front draft_2
-  - first:
-      213: 8973881943563373714
-    second: knight run - front draft_3
+      213: -2752431377516283345
+    second: red knight run sheet_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -60,7 +48,7 @@ TextureImporter:
     mipBias: -100
     wrapU: 1
     wrapV: 1
-    wrapW: 1
+    wrapW: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -123,7 +111,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: knight run - front draft_0
+      name: red knight run sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +125,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20de3135fb9a27450800000000000000
-      internalID: 6085112685728623874
+      spriteID: b11eac40ddfc3c6e0800000000000000
+      internalID: -1818381276352421605
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knight run - front draft_1
+      name: red knight run sheet_1
       rect:
         serializedVersion: 2
         x: 624
@@ -158,14 +146,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aef11a7134c157a70800000000000000
-      internalID: 8823990119387176938
+      spriteID: aaa4a9dcd1bbfb720800000000000000
+      internalID: 2864213624708811434
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knight run - front draft_2
+      name: red knight run sheet_2
       rect:
         serializedVersion: 2
         x: 1248
@@ -179,14 +167,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa5e65a2054d3a000800000000000000
-      internalID: 46113861976647082
+      spriteID: 61b3b401870d05a10800000000000000
+      internalID: 1896244657210997526
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knight run - front draft_3
+      name: red knight run sheet_3
       rect:
         serializedVersion: 2
         x: 1872
@@ -200,8 +188,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29c036ef412a98c70800000000000000
-      internalID: 8973881943563373714
+      spriteID: f2ab082ce366dc9d0800000000000000
+      internalID: -2752431377516283345
       vertices: []
       indices: 
       edges: []
@@ -209,7 +197,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 33847c8896a5cc64ebbe9f978ee9a081
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
