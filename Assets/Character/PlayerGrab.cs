@@ -60,10 +60,10 @@ public class PlayerGrab : MonoBehaviour {
         }
     }
 
-    void EnterKeep(GameObject keep) {
+    void TryEnterKeep(PlayerKeep.TryEnterKeepEvent keepEvent) {
         if (HeldItem != null) {
-            HeldItem.Apply(keep.GetComponent<KeepController>());
-            Drop();
+            keepEvent.Cancel = true;
+            HeldItem.Apply(keepEvent.Keep.GetComponent<KeepController>());
         }
     }
 

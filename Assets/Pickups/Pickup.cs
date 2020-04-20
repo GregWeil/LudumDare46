@@ -13,9 +13,8 @@ public class Pickup : MonoBehaviour {
     public bool Held;
 
     public void Apply(KeepController keep) {
-        var sound = Instantiate(SoundPrefab, transform.position, transform.rotation);
-        sound.name = SoundPrefab.name;
-        Destroy(sound, 1f);
+        var initialHealth = Health;
+        var initialAmmo = Ammo;
 
         keep.Health += Health;
         if (keep.Health > keep.MaxHealth) {
@@ -28,9 +27,13 @@ public class Pickup : MonoBehaviour {
         keep.Ammo += Ammo;
         Ammo = 0;
 
-        if (Health > 0 || Ammo > 0) {
-            Drop();
-        } else {
+        if (Health < initialHealth || Ammo < initialAmmo) {
+            var sound = Instantiate(SoundPrefab, transform.position, transform.rotation);
+            sound.name = SoundPrefab.name;
+            Destroy(sound, 1f);
+        }
+
+        if (Health <= 0 && Ammo <= 0) {
             Destroy(gameObject);
         }
     }
