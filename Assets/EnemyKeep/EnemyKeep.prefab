@@ -147,6 +147,9 @@ MonoBehaviour:
   FallSpeed: 5
   ShakeInterval: 0.05
   ShakeRadius: 0.2
+  SpawnPrefab: {fileID: 6024534534349893576, guid: fd34d99f3f2360f43ad6d0868bb1eba0,
+    type: 3}
+  SpawnInterval: 5
 --- !u!1 &2537271700747594792
 GameObject:
   m_ObjectHideFlags: 0

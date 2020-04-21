@@ -11,6 +11,9 @@ public class BossHealth : MonoBehaviour {
     public float FallSpeed;
     public float ShakeInterval;
     public float ShakeRadius;
+    public GameObject SpawnPrefab;
+    public float SpawnInterval;
+    private float NextSpawnTime;
 
     void Update() {
         var shake = false;
@@ -26,6 +29,14 @@ public class BossHealth : MonoBehaviour {
             transform.Translate(0, FallSpeed * Time.deltaTime, 0);
             if (transform.position.y > 0f) {
                 transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+            }
+        }
+        if (!shake) {
+            if (Time.time > NextSpawnTime) {
+                var enemy = Instantiate(SpawnPrefab);
+                enemy.name = SpawnPrefab.name;
+                enemy.transform.position = transform.position;
+                NextSpawnTime = Time.time + SpawnInterval;
             }
         }
         if (!shake) {
