@@ -6,8 +6,10 @@ public class OrcMovement : MonoBehaviour {
     private SpriteRenderer Sprite;
     private Animator Animation;
     private Vector3 Target;
+    private float TargetRadius;
     private bool Aggro;
     private bool Attacking;
+    private bool AttackCooldown;
 
     public AudioSource AttackSound;
 
@@ -16,6 +18,7 @@ public class OrcMovement : MonoBehaviour {
     public float AggroRange;
     public float TelegraphTime;
     public float SwingTime;
+    public float Cooldown;
 
     void Start() {
         Sprite = GetComponentInChildren<SpriteRenderer>();
@@ -29,18 +32,19 @@ public class OrcMovement : MonoBehaviour {
             yield return new WaitForSeconds(Random.Range(0.1f, 0.25f));
             if (Attacking) continue;
             Aggro = false;
-            var target = GameObject.Find("Keep");
+            Target = GameObject.Find("Keep").transform.position;
+            TargetRadius = 4f;
             var players = GameObject.FindObjectsOfType<PlayerMovement>();
             foreach (var player in players) {
                 var offset = player.transform.position - transform.position;
                 offset.y = 0;
                 if (offset.magnitude < AggroRange) {
                     Aggro = true;
-                    target = player.gameObject;
+                    Target = player.transform.position;
+                    TargetRadius = 2f;
                     break;
                 }
             }
-            Target = target.transform.position;
         }
     }
 
@@ -50,16 +54,29 @@ public class OrcMovement : MonoBehaviour {
         yield return new WaitForSeconds(TelegraphTime);
         Animation.SetTrigger("Swing");
         AttackSound.Play();
+        var handled = new HashSet<Transform>();
+        var colliders = Physics.OverlapSphere(transform.position, 2f, LayerMask.GetMask("Character", "Keep"));
+        foreach (var collider in colliders) {
+            var root = collider.transform.root;
+            if (root == transform.root) continue;
+            if (handled.Contains(root)) continue;
+            collider.SendMessageUpwards("Damage");
+            handled.Add(root);
+        }
         yield return new WaitForSeconds(SwingTime);
         Animation.SetTrigger("AttackDone");
         Attacking = false;
-        Aggro = false;
+        AttackCooldown = true;
+        yield return new WaitForSeconds(Cooldown);
+        AttackCooldown = false;
     }
 
     void Update() {
         var speed = Aggro ? AggroMoveSpeed : MoveSpeed;
-        if (Aggro && Vector3.Distance(transform.position, Target) < 2f) {
-            if (!Attacking) StartCoroutine(Attack());
+        if (Attacking || AttackCooldown) {
+            speed = 0f;
+        } else if (Vector3.Distance(transform.position, Target) < TargetRadius) {
+            StartCoroutine(Attack());
             speed = 0f;
         }
         var velocity = speed * (Target - transform.position).normalized;

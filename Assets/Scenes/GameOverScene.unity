@@ -309,6 +309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneToLoad: TitleScene
+  Timeout: 3
 --- !u!223 &1425243347
 Canvas:
   m_ObjectHideFlags: 0

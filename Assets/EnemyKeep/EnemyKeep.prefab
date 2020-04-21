@@ -136,6 +136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f258e3a593a75bc429e034457631dfad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShakeAudioPrefab: {fileID: 3896643483331138874, guid: ae6915d7f75a0464391afb3aa9f639fa,
+    type: 3}
   Cannons:
   - {fileID: 1708196065027001975}
   - {fileID: 4413671210301589847}

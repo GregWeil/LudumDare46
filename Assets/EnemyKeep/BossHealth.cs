@@ -4,6 +4,7 @@ public class BossHealth : MonoBehaviour {
     private Vector3 ShakeOffset = Vector3.zero;
     private float ShakeTimer = 0f;
 
+    public GameObject ShakeAudioPrefab;
     public EnemyCannon[] Cannons;
 
     public int Health;
@@ -35,6 +36,12 @@ public class BossHealth : MonoBehaviour {
             ShakeOffset = Random.insideUnitSphere * ShakeRadius;
             transform.Translate(ShakeOffset);
             ShakeTimer = ShakeInterval;
+            var audio = Instantiate(ShakeAudioPrefab, transform.position, transform.rotation);
+            audio.name = ShakeAudioPrefab.name;
+            var audioSource = audio.GetComponent<AudioSource>();
+            audioSource.pitch = Random.Range(0.8f, 1.1f);
+            audioSource.volume = Health > 0 ? 0.25f : Random.Range(0.25f, 0.5f);
+            Destroy(audio, 1f);
         }
         ShakeTimer -= Time.deltaTime;
     }
