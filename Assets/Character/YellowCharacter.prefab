@@ -53,6 +53,15 @@ MonoBehaviour:
   - Base: {fileID: -2969946526158964891, guid: 6d2516e3085d0914c82c74f0e9b18d42, type: 3}
     Override: {fileID: -310831028371028499, guid: 0c9c4cd9e98b8964a8edef1ae583bff0,
       type: 3}
+  - Base: {fileID: -7958722574391649913, guid: 9aab90fab0ca1d14fb8a5efa83dbaa65, type: 3}
+    Override: {fileID: 9212874944765023542, guid: c373743af7050cf4b89883f7574ab7ff,
+      type: 3}
+  - Base: {fileID: 5917032389812929704, guid: 9aab90fab0ca1d14fb8a5efa83dbaa65, type: 3}
+    Override: {fileID: -1036294349956548556, guid: c373743af7050cf4b89883f7574ab7ff,
+      type: 3}
+  - Base: {fileID: 7233394027979541124, guid: 9aab90fab0ca1d14fb8a5efa83dbaa65, type: 3}
+    Override: {fileID: 5632423285609131630, guid: c373743af7050cf4b89883f7574ab7ff,
+      type: 3}
 --- !u!1001 &7645259971808711984
 PrefabInstance:
   m_ObjectHideFlags: 0
