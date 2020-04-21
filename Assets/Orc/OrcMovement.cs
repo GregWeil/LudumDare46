@@ -54,14 +54,16 @@ public class OrcMovement : MonoBehaviour {
         yield return new WaitForSeconds(TelegraphTime);
         Animation.SetTrigger("Swing");
         AttackSound.Play();
-        var handled = new HashSet<Transform>();
-        var colliders = Physics.OverlapSphere(transform.position, 2f, LayerMask.GetMask("Character", "Keep"));
-        foreach (var collider in colliders) {
-            var root = collider.transform.root;
-            if (root == transform.root) continue;
-            if (handled.Contains(root)) continue;
-            collider.SendMessageUpwards("Damage");
-            handled.Add(root);
+        if (enabled) {
+            var handled = new HashSet<Transform>();
+            var colliders = Physics.OverlapSphere(transform.position, 2f, LayerMask.GetMask("Character", "Keep"));
+            foreach (var collider in colliders) {
+                var root = collider.transform.root;
+                if (root == transform.root) continue;
+                if (handled.Contains(root)) continue;
+                collider.SendMessageUpwards("Damage");
+                handled.Add(root);
+            }
         }
         yield return new WaitForSeconds(SwingTime);
         Animation.SetTrigger("AttackDone");

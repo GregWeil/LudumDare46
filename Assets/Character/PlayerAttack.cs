@@ -28,7 +28,7 @@ public class PlayerAttack : MonoBehaviour {
         }
         if (hit) GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(0.4f);
-        movement.MoveSpeed = speed;
+        if (!IsDead) movement.MoveSpeed = speed;
         Attacking = false;
     }
 
