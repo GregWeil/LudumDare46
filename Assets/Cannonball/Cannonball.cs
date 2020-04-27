@@ -30,10 +30,8 @@ public class Cannonball : MonoBehaviour {
     void Update() {
         transform.position = Parabola.PositionAtTime(StartPosition, TargetPosition, StartTime, Duration, Height, Time.time);
         var collisions = Physics.OverlapSphere(transform.position, 0.5f);
-        if (collisions.Any(collider => CheckCollider(collider))) {
+        if (collisions.Any(collider => CheckCollider(collider)) || transform.position.y < 0f) {
             Explode();
-        } else if (transform.position.y < -100f) {
-            Destroy(gameObject);
         }
     }
 

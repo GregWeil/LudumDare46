@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyKeepSpawner : MonoBehaviour {
     private List<GameObject> ActiveKeeps = new List<GameObject>();
-    private int KeepsDestroyed = 0;
+    private static int KeepsDestroyed = 0;
 
     public UnityEngine.UI.Text ScoreDisplay;
     public GameObject EnemyKeepPrefab;
@@ -12,13 +12,19 @@ public class EnemyKeepSpawner : MonoBehaviour {
     public float KeepDistance;
     public float SpawnRange;
 
+    public static string ScoreText => $"{KeepsDestroyed} enemy {(KeepsDestroyed != 1 ? "castles" : "castle")} destroyed";
+
+    void Start() {
+        KeepsDestroyed = 0;
+    }
+
     void Update() {
         KeepsDestroyed += ActiveKeeps.RemoveAll(keep => keep == null);
         var desired = Mathf.RoundToInt(7f - 6f / (0.1f * KeepsDestroyed + 1f));
         if (ActiveKeeps.Count < desired) {
             SpawnKeep();
         }
-        ScoreDisplay.text = KeepsDestroyed > 0 ? $"{KeepsDestroyed}" : "";
+        ScoreDisplay.text = ScoreText;
     }
 
     Vector3 GetFallbackPosition(Vector3 avoidPosition) {

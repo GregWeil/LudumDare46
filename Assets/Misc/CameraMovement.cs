@@ -12,6 +12,7 @@ public class CameraMovement : MonoBehaviour {
             var players = GameObject.FindGameObjectsWithTag("Player");
             if (players.Any()) {
                 var playersPosition = players.Aggregate(Vector3.zero, (position, player) => position + player.transform.position);
+                playersPosition /= players.Length;
                 targetPosition += (playersPosition - targetPosition) * PlayerWeight;
             }
             targetPosition.y = 0f;
